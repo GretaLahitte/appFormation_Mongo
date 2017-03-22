@@ -1,0 +1,65 @@
+{
+	"Formations":{
+		"collection":"formations",
+		"schema":{
+			"libelle":"String",
+			"duree":"String",
+			"plan_cours":"String",
+			"prix":"String",
+			"formateurs":[{"type": "ObjectId","ref": "Formateurs" }],
+			"centres":[{"type": "ObjectId","ref":"Centres"}]
+		}
+	},
+  "Centres":{
+    "collection":"centres",
+    "schema":{
+	"_id":"ObjectId",
+      "nom":"String",
+      "adresse":"String",
+      "cp":"Number",
+      "city":"String",
+      "lat":"Number",
+      "lon":"Number",
+      "home_phone":"String",
+      "mail":"String"
+    }
+  },
+	"Formateurs":{
+		"collection":"formateurs",
+		"schema":{
+			"_id":"ObjectId",
+			"nom":"String",
+			"prenom":"String",
+			"statut":"String",
+			"prix_jour":"Number",
+      "adresse":"String",
+      "cp":"Number",
+      "city":"String",
+      "mail":"String",
+      "mobil_phone":"String",
+      "home_phone":"string"
+		}
+	},
+	"Users":{
+		"collection":"users",
+		"schema":{
+			"name":"String",
+			"firstName":"String",
+			"login":"String",
+			"mdp":"String",
+			"function":"String",
+			"office":"String",
+			"date_naiss":"String",
+			"adresse":"String",
+			"cp":"String",
+			"city":"String",
+      "mail":"String",
+			"mobil_phone":"String",
+			"home_phone":"String",
+      "lat":"Number",
+      "lon":"Number"
+		}
+	}
+
+
+}

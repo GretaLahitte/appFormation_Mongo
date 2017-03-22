@@ -1,0 +1,61 @@
+<div class="conteneur">
+<h1>{{title}}</h1><br>
+<form class="form-horizonthal" method="POST" action="{{form_action}}" id="formAddFormation">
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">Libellé</label>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" id="libelleField" name="libelle" placeholder="libelle de formation" value="{{formations.libelle}}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dureeField" class="col-xs-2">Durée en mois</label>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" id="dureeField" name="duree" placeholder="durée de formation" value="{{formations.duree}}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="plan_coursField" class="col-xs-2">Plan Cours</label>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" id="plan_coursField" name="plan_cours" placeholder="Plan cours" value="{{formations.plan_cours}}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="prixField" class="col-xs-2">Prix €</label>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" id="prixField" name="prix" placeholder="prix de la formation" value="{{formations.prix}}" />
+     </div>
+    </div>
+
+
+
+   <input type="hidden" name="id" value="{{formations._id}}" />
+
+</br>
+    </br> </br> </br>
+    <b>Formateurs :</b><br>
+
+    {{#each formateurs}}
+          <input type="checkbox" name="formateurs" value={{this.id}} {{#ifIn this._id ../formations/formateurs }} checked {{/ifIn}}  >{{this.nom}} {{this.prenom}} <br>
+    {{/each}}
+    <br/>
+    </br></br></br>
+    <b>Centres</b>
+    {{#each centres}}
+          <input type="checkbox" name="centres" value={{this.id}} {{#ifIn this._id ../formations/centres }} checked {{/ifIn}}  >{{this.nom}}  <br>
+    {{/each}}
+    <div>
+    <button type="submit" class="btn btn-primary"  />Confirmer la {{libelle}}</button>
+    </div>
+</form>
+
+</div>
+
+<!­­ Script de validation du formulaire de modification ­­>
+<script>
+    var form = document.getElementById('formAddFormation');
+    form.addEventListener('submit', function(evt) {
+        form.action += "/{{formations._id}}";
+        form.submit();
+    });
+</script>
+

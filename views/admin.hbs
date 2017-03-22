@@ -1,0 +1,36 @@
+<div class="conteneur">
+<h1>{{title}}</h1>
+<br>
+<select name="formations" id="formations">
+           <option value="0" >Choisissez une formation pour la modifier</option>
+        {{#each formations}}
+            <option value="{{this._id}}" >{{this.libelle}}</option>
+        {{/each}}
+</select>
+<h2>or</h2><br/>
+<button id="Formation">Creez une formation</button>
+<h2>or</h2><br/>
+<select name="formations" id="delFormations">
+           <option value="0" >Selctionnez une formation à effacer</option>
+        {{#each formations}}
+            <option value="{{this._id}}" >{{this.libelle}}</option>
+        {{/each}}
+</select>
+</div>
+<script>
+    var usr = document.getElementById('formations');
+    usr.addEventListener('change', function(evt) {
+       window.location = "/formFormation/"+usr.value;
+    });
+    var btn_new = document.getElementById('Formation');
+    btn_new.addEventListener('click', function(evt) {
+       window.location = "/newFormation";
+    });
+    var del_Formation = document.getElementById('delFormations');
+    del_Formation.addEventListener('change', function(evt) {
+		if(confirm('Etes vous sur?')){
+       window.location = "/delFormation/"+del_Formation.value;
+       }else{window.location="/formations"}
+    });
+
+</script>

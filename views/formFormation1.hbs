@@ -1,0 +1,20 @@
+<div class="conteneur">
+<h1>{{title}}</h1>
+<form method="POST" action="{{form_action}}" id="formAddFormation">
+   <input type="hidden" name="id" value="{{formations._id}}" />
+    libelle : <input type="text" name="libelle" value="{{formations.libelle}}" /><br/>
+    duree : <input type="text" name="duree" value="{{formations.duree}}" /><br/>
+    plan_cours : <input type="text" name="plan_cours" value="{{formations.plan_cours}}" /><br/>
+    prix : <input type="text" name="prix" value="{{formations.prix}}" /><br/>
+    formateurs :<br>
+
+{{#each formateurs}}
+          <input type="checkbox" name="formateurs" value={{this.id}}   >{{this.nom}} {{this.prenom}} <br>
+    {{/each}}
+    <br/>
+
+
+
+    <input type="submit" value="Confirmer la {{libelle}}" />
+</form>
+</div>

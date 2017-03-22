@@ -1,0 +1,26 @@
+<div class="conteneur">
+<br>
+<h1>{{title}}</h1>
+
+<h2>{{formations.libelle}}</h2>
+
+			<ul id={{this.id}}>
+    			<li>duree :..................... {{formations.duree}} mois</li>
+    			<li>plan_cours :......................... {{formations.plan_cours}}</li>
+    			<li>prix :........................... {{formations.prix}} €</li>
+
+    		  <li>formateurs:<br>
+
+{{#each formations.formateurs}}
+    <option value="{{this._id}}" >{{this.nom}} {{this.prenom}}</option>
+{{/each}}
+          </li>
+    		  <li>centres:<br>
+
+{{#each centres}}
+    <option value="{{this._id}}" >{{this.nom}} </option>
+{{/each}}
+          </li>
+			</ul>
+</div>
+

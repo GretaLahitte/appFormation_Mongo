@@ -1,0 +1,42 @@
+{
+    "GET/" : {"controler": "index"},
+    "GET/index" : {"controler": "index" },
+    "GET/formations" : {"controler" : "/formations/formations"},
+
+    "GET/login" : {"controler" : "login"},
+    "GET/logout": {"controler": "logout"},
+    "GET/admin" : {"controler": "admin"},
+
+    "GET/formUser": {"controler": "/users/formUser"},
+    "GET/modifyUser": {"controler": "/users/modifyUser"},
+    "GET/newUser": {"controler": "/users/newUser"},
+    "GET/createUser": {"controler": "/users/createUser"},
+    "GET/users": {"controler": "/users/users"},
+    "GET/delUser": {"controler": "/users/delUser","modelName": "Users","view": "users"},
+    "POST/createUser": {"controler": "/users/createUser"},
+
+    "GET/centres": {"controler": "/centres/centres"},
+    "GET/formCentre": {"controler": "/centres/formCentre"},
+    "GET/modifyCentre": {"controler": "/centres/modifyCentre"},
+    "GET/newCentre": {"controler": "/centres/newCentre"},
+    "GET/createCentre": {"controler": "/centres/createCentre"},
+    "GET/delCentre": {"controler": "/centres/delCentre","modelName": "Centre","view": "centres"},
+    "POST/createCentre": {"controler": "/centres/createCentre"},
+    "POST/modifyCentre" : {"controler":"/centres/modifyCentre"},
+
+    "GET/formateurs": {"controler": "/formateurs/formateurs"},
+    "GET/formFormateur": {"controler": "/formateurs/formFormateur"},
+    "GET/newFormateur" : {"controler" : "/formateurs/newFormateur"},
+    "GET/createFormateur": {"controler": "/formateurs/createFormateur"},
+    "GET/modifyFormateur": {"controler": "/formateurs/modifyFormateur"},
+    "GET/delFormateur": {"controler": "/formateurs/delFormateur","modelName": "Formateurs","view": "formateurs"},
+    "POST/createFormateur": {"controler":"/formateurs/createFormateur"},
+    "POST/modifyFormateur" : {"controler":"/formateurs/modifyFormateur"},
+
+    "GET/form_formation" : {"controler" : "/formations/form_formation"},
+    "GET/formFormation" : {"controler" : "/formations/formFormation"},
+    "GET/newFormation" : {"controler" : "/formations/newFormation"},
+    "GET/delFormation" : {"controler" : "/formations/delFormation"},
+    "POST/createFormation":{"controler":"/formations/createFormation"},
+    "POST/modifyFormation" : {"controler":"/formations/modifyFormation"}
+}

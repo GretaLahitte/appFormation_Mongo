@@ -1,0 +1,37 @@
+<div class="conteneur">
+<h1>{{title}}</h1>
+<br>
+<select name="centres" id="centre">
+           <option value="0" >Selectionner un centre pour le modifier</option>
+        {{#each centres}}
+            <option value="{{this._id}}" >{{this.nom}} </option>
+        {{/each}}
+</select>
+<h2>or</h2><br/>
+<button id="newCentre">Créer un centre de formation</button>
+<h2>or</h2><br/>
+<select name="centres" id="delCentres">
+           <option value="0" >Selctionnez un centre à effacer</option>
+        {{#each centres}}
+            <option value="{{this._id}}" >{{this.nom}}</option>
+        {{/each}}
+</select>
+</div>
+
+
+<script>
+    var ctr = document.getElementById('centre');
+    ctr.addEventListener('change', function(evt) {
+       window.location = "/formCentre/"+ctr.value;
+    });
+    var btn_new = document.getElementById('newCentre');
+    btn_new.addEventListener('click', function(evt) {
+       window.location = "/newCentre";
+    });
+    var del_Centre = document.getElementById('delCentres');
+    del_Centre.addEventListener('change', function(evt) {
+		if(confirm('Etes vous sur?')){
+       window.location = "/delCentre/"+del_Centre.value;
+       }else{window.location="/centres"}
+    });
+</script>

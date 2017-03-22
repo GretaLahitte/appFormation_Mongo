@@ -1,0 +1,179 @@
+<div class="conteneur">
+<br>
+  <h1>{{title}}</h1>
+  <div id="map" class="map  col-md-6"></div>
+  <div id="overlay" style="background-color:white;border-radius:10px;border:1px solid black;padding:5px 10px;"></div>
+     <div id="infos" class='ol-infos'></div>
+
+  <script src="../Assets/ol3/js/ol.js"></script>
+
+
+  <div class=" col-md-6">
+  <select name="formations" id="formations">
+  <option value="0" >Choisissez une formation</option>
+  {{#each formations}}
+      <option value="{{this._id}}" >{{this.libelle}}</option>
+  {{/each}}
+  </select>
+  </div>
+</div>
+	<script>
+//marker
+var features = [];
+var feature,geom,flag;
+
+
+var markers=[
+    {{#each coord}}
+		[{{this.lat}},{{this.lon}},"{{this.nom}}"],
+	{{/each}}
+	];
+
+/*
+var markers=[
+    [43.5,-1.000,404],
+		[48.8846,2.2697,304],
+    ];
+*/
+for (var i=0; i<markers.length; i++) {
+	var lon = markers[i][1];
+	var lat = markers[i][0];
+	var site = markers[i][2];
+	geom = new ol.geom.Point(
+	ol.proj.transform([lon,lat],'EPSG:4326','EPSG:3857')
+	);
+	feature = new ol.Feature({geometry:geom,nom:site});
+	features.push(feature);
+	flag='red';
+	console.log(feature.H.nom);
+	feature.setStyle([
+		new ol.style.Style({
+			image: new ol.style.Icon(({
+				color:flag,
+				scale:0.8,
+				anchor:[1,1],
+				anchorXUnits:'fraction',
+				anchorYUnits:'fraction',
+				opacity:0.8,
+				src:'../Sandbox/dot.png',
+				text:site
+		}))
+	})
+]);
+}
+//vectorSource.addFeature( features );
+
+var vectorSource = new ol.source.Vector({features:features});
+var vectorLayer = new ol.layer.Vector({source:vectorSource});
+
+//map layer
+		var osmLayer = new ol.layer.Tile({
+			source: new ol.source.OSM()
+			});
+
+		var interaction = new ol.interaction.DragRotateAndZoom();
+		var interactionClickZoom = new ol.interaction.DoubleClickZoom({delta:4});
+
+
+		var interactions = ol.interaction.defaults({mouseWheelZoom:false}).extend([interaction,interactionClickZoom]) ;
+
+		var control = new ol.control.FullScreen();
+		var controlResetNorth = new ol.control.Rotate();
+
+		var controls = ol.control.defaults().extend([control,controlResetNorth]);
+
+		var center = ol.proj.transform([1.000,44.4],'EPSG:4326','EPSG:3857');
+
+		var overlay = new ol.Overlay({
+			element:document.getElementById('overlay'),
+			positioning:'bottom-center',
+			});
+
+
+		var infooverlay = new ol.Overlay({
+			element:document.getElementById('infos'),
+			positioning:'bottom-center',
+			});
+			//infooverlay.getElement().innerHTML = ol.coordinate.toStringHDMS(center);;
+
+		var view = new ol.View({
+			center:center,
+			zoom:6.6});
+//render
+		var map = new ol.Map({
+			target:'map',
+			render:'canvas',
+			layers:[osmLayer,vectorLayer],
+			interactions:interactions,
+			controls:controls,
+			overlays:[overlay,infooverlay],
+			view:view
+			});
+		/*
+		//toggle visibility
+		var checkbox = document.querySelector('#selection');
+		checkbox.addEventListener('change',function(){
+			var checked = this.checked;
+			if (checked !== vectorLayer.getVisible()){
+				vectorLayer.setVisible(checked);
+				}
+			});
+		vectorLayer.on('change:visible', function () {
+		var visible = this.getVisible();
+		if (visible !== checkbox.checked) {
+		checkbox.checked = visible;
+		}
+		});
+		vectorLayer.refresh({force:true});
+*/
+		//click event
+		/*
+		map.on('click',function(event){
+			var coord = event.coordinate;
+			var degrees = ol.proj.transform(coord,'EPSG:3857','EPSG:4326');
+			var hdms = ol.coordinate.toStringHDMS(degrees);
+			var element = overlay.getElement();
+			element.innerHTML = hdms;
+			overlay.setPosition(coord);
+			map.addOverlay(overlay);
+			});
+			*/
+
+	
+		//marker event
+
+		map.on('pointermove', function(e) {
+		//	console.log('event: ',e);
+            var feature = map.forEachFeatureAtPixel(e.pixel, function(feature) {return feature;});
+			//console.log('feature: ',feature.H.nom);
+			//console.log('markers: ',markers);
+			console.log('feature: ',feature);
+			//alert(feature.) 
+			if(feature){
+						//map.addOverlay(overlay);
+		    var coordinates = e.coordinate;
+console.log('coord: ',e.coordinate);
+			 		    infooverlay.setPosition(coordinates);
+
+			
+				infooverlay.getElement().innerHTML=feature.H.nom;
+			
+			
+			
+			}else{
+		  //  var coordinates = e.coordinate;
+
+			infooverlay.getElement().innerHTML=null;
+			}
+
+        });
+	
+	</script>
+
+
+<script>
+    var usr = document.getElementById('formations');
+    usr.addEventListener('change', function(evt) {
+       window.location = "/formFormation/"+usr.value;
+    });
+ </script>

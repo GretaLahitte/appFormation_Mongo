@@ -1,0 +1,23 @@
+<div class="conteneur">
+    <div class="alert alert-success">
+<h1>{{title}}</h1>
+</div>
+{{#formations}}
+
+<ul>
+    <li>libelle :.......................... {{this.libelle}}</li><br/>
+    <li>duree :..................... {{this.duree}} mois</li><br/>
+    <li>plan_cours :......................... {{this.plan_cours}}</li><br/>
+    <li>prix :........................... {{this.prix}} €</li><br/>
+    <li>formateurs:<br>
+
+				</li>
+
+
+</ul>
+{{/formations}}
+{{#each formations.formateurs}}
+						{{this.nom}} {{this.prenom}} <br>
+					{{/each}}
+
+</div>

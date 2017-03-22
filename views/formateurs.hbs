@@ -1,0 +1,36 @@
+<div class="conteneur">
+<h1>{{title}}</h1>
+<br>
+<select name="formateurs" id="formateurs">
+           <option value="0" >Select a formateur to modify his datas</option>
+        {{#each formateurs}}
+            <option value="{{this._id}}" >{{this.nom}} {{this.prenom}} </option>
+        {{/each}}
+</select>
+<h2>or</h2><br/>
+<button id="newFormateur">Create a new formateur</button>
+<h2>or</h2><br/>
+<br/><br>
+<select name="formateurs" id="delFormateurs">
+           <option value="0" >Selctionnez un formateur à effacer</option>
+        {{#each formateurs}}
+            <option value="{{this._id}}" >{{this.nom}} {{this.prenom}}</option>
+        {{/each}}
+</select>
+</div>
+<script>
+    var usr = document.getElementById('formateurs');
+    usr.addEventListener('change', function(evt) {
+       window.location = "/formFormateur/"+usr.value;
+    });
+    var btn_new = document.getElementById('newFormateur');
+    btn_new.addEventListener('click', function(evt) {
+       window.location = "/newFormateur";
+    });
+    var del_Formateur = document.getElementById('delFormateurs');
+    del_Formateur.addEventListener('change', function(evt) {
+		if(confirm('Etes vous sur?')){
+       window.location = "/delFormateur/"+del_Formateur.value;
+       }else{window.location="/formateurs"}
+    });
+</script>
