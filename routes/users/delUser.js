@@ -10,7 +10,6 @@ router.route('/:_id').get(function(req, res, next) {
 		if (err) throw err;
 		console.log('User removed');
 		res.render('delUser',{title:'Delete Task',status:'true'});
-	});}else res.redirect('login'       
-            });
+	});}else {res.redirect('login')};
 });
 module.exports = router;
