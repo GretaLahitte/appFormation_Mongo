@@ -1,6 +1,5 @@
 body {
 	background-color:rgba(224, 154, 154, 0.1);
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 img {
@@ -90,7 +89,6 @@ img#twitter{
     width: 80%; /* Could be more or less, depending on screen size */
 }
 .container {
-    padding: 16px;
 }
 .wrapper {
 	margin-top: 80px;
