@@ -1,4 +1,3 @@
-<div class="conteneur">
 <h1>{{title}}</h1>
 <br>
 <select name="formateurs" id="formateurs">
@@ -17,7 +16,6 @@
             <option value="{{this._id}}" >{{this.nom}} {{this.prenom}}</option>
         {{/each}}
 </select>
-</div>
 <script>
     var usr = document.getElementById('formateurs');
     usr.addEventListener('change', function(evt) {

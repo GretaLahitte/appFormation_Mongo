@@ -5,7 +5,7 @@ var router = express.Router();
 router.route('/:_id').get(function(req, res, next) {
 	if ((req.session.passport) && (req.session.passport.user != null)) {
 		console.log('req.originalUrl : ' , req.originalUrl);
-  		GLOBAL.database_schema.Users.findByIdAndRemove(req.params._id,
+  		GLOBAL.database_schema.Centres.findByIdAndRemove(req.params._id,
 			function(err,result){
 				if (err) throw err;
 				console.log('User removed');

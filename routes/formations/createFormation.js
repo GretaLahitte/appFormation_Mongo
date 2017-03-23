@@ -8,27 +8,31 @@ router.route('/').post(function (req, res) {
 		console.log('req body: ',req.body);
 		var newFormation = new GLOBAL.database_schema.Formations(req.body);
 	    newFormation.save(function (err, result) {
-	            if (err) {
-	                throw err;
-	            }
-        GLOBAL.database_schema.Formations.findById({'_id':result._id}).populate('formateurs').exec(function(err, results) {
-	console.log('formation list',result); 
-  console.log('formateurs list: ',results);
-  console.log('test: ',results);
-	res.render('form_formation',{
-	                title: 'Creating Formation without error with datas below :',
-	                formations: results,
-
-                  status:'true'
-	            });
-	       } // fin callback de l'insert
-	    );
-      })
-	}else res.redirect('login', {
-                title: 'Please login',
-                 
-            });
+	    	if (err) {
+	        	throw err;
+	        }
+			GLOBAL.database_schema.Formations.findById({'_id':result._id}).populate('formateurs').exec(
+				function(err, results) {
+					console.log('formation list',result); 
+					console.log('formateurs list: ',results);
+					console.log('test: ',results);
+					res.render('form_formation',{
+		                title: 'Creating Formation without error with datas below :',
+		                formations: results,
+						status:'true',
+						map:true
+		            });
+		       	} // fin callback de l'insert
+		    );//fin de populate
+		})
+	}else{
+		res.redirect('login', {
+            title: 'Please login',
+			map:true
+		});
+	}
 }); // fin de la gestion de la route
+
 module.exports = router;
 
 

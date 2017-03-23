@@ -3,10 +3,18 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	    if ((req.session.passport) && (req.session.passport.user != null)) {
-
-  res.render('index', { title: 'Bienvenu',status:'true'});
-}else{res.render('index', { title: 'Bienvenu'})}
+	if ((req.session.passport) && (req.session.passport.user != null)) {
+		res.render('index', {
+			title: 'Bienvenu',
+			status:'true',
+			map:true
+		});
+	}else{
+		res.render('index', {
+			title: 'Bienvenu',
+			map:true
+		})
+	}
 });
 
 module.exports = router;

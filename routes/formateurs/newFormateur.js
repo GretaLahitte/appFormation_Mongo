@@ -8,10 +8,12 @@ router.get('/', function (req, res, next) {
 			title: 'Create a new Formateur',
 			libelle: "creation",
 			form_action: "/createFormateur",
-			status:"true"
+			status:"true",
+			map:true
 		});
-	}else{res.render('login', {
-        title: 'Please login'
+	}else{
+		res.render('login', {
+			title: 'Please login',
 		});
     }
 });
