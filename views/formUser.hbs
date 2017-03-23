@@ -17,7 +17,7 @@
     city : <input type="text" name="city" value="{{user.city}}" /><br/>
     mobile_phone : <input type="text" name="mobile_phone" value="{{user.mobil_phone}}" /><br/>
     home_phone : <input type="text" name="home_phone" value="{{user.home_phone}}" /><br/>
-    <input type="submit" value="Confirmer la {{libelle}}" />
+    <input type="submit" value="Confirmer la {{libelle}}" disabled id="submit" />
 </form>
 </div>
 <!-- Script de validation du formulaire de modification -->
@@ -49,6 +49,7 @@ xhttp.open("GET", "http://nominatim.openstreetmap.org/search?q="+info+"&format=j
 xhttp.send();
 
 function myFunction(json) {
+	document.getElementById("submit").disabled=false;
     var jsonDoc = JSON.parse(json.responseText);
     console.log(jsonDoc[0].lat);
     console.log(jsonDoc[0].lon);
