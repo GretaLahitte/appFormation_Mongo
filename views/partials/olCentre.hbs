@@ -23,7 +23,6 @@ for (var i=0; i<markers.length; i++) {
 		);
 	feature = new ol.Feature({geometry:geom,nom:site});
 	features.push(feature);
-	//console.log(feature.H.nom);
 	feature.setStyle([
 		new ol.style.Style({
 			image: new ol.style.Icon(({
@@ -41,7 +40,6 @@ for (var i=0; i<markers.length; i++) {
 }
 
 
-//vectorSource.addFeature( features );
 var vectorSource = new ol.source.Vector({features:features});
 var vectorLayer = new ol.layer.Vector({source:vectorSource});
 
@@ -114,21 +112,15 @@ var vectorLayer = new ol.layer.Vector({source:vectorSource});
 
 //marker event
 	map.on('pointermove', function(e) {
-		//console.log('event: ',e);
+		map.removeOverlay(infooverlay);
 		var feature = map.forEachFeatureAtPixel(e.pixel, function(feature) {return feature;});
-		//console.log('feature: ',feature.H.nom);
-		//console.log('markers: ',markers);
-		console.log('feature: ',feature);
-		//alert(feature.) 
 		if(feature){
-			//map.addOverlay(overlay);
+			map.addOverlay(infooverlay);
 			var coordinates = e.coordinate;
-			console.log('coord: ',e.coordinate);
 			infooverlay.setPosition(coordinates);
 			infooverlay.getElement().innerHTML=feature.H.nom;
 		}else{
-			//var coordinates = e.coordinate;
-			infooverlay.getElement().innerHTML=null;
+			map.removeOverlay(infooverlay);
 		}
 });
 </script>
