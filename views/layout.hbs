@@ -4,12 +4,13 @@
   <body>
 	{{> nav}}
 	<div class="row">
-		{{#compare map true operator='=='}}
-			{{>olCentre}}
-		{{/compare}}
 		<div class="conteneur col-md-8"> 
 			{{{body}}}
 		</div>
+		{{#compare map true operator='=='}}
+			{{>olCentre}}
+		{{/compare}}
+		
 	</div>
 	{{>endBootstrap}}
   </body>

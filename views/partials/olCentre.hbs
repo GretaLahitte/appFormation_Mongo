@@ -1,7 +1,6 @@
 <div id="map" class="map  col-md-4"></div>
 	<div id="overlay" style="background-color:white;border-radius:10px;border:1px solid black;padding:5px 10px;"></div>
 	<div id="infos" class='ol-infos'></div>
-	<input type="checkbox" id='checkbox'  >Hide layer <br>
 	<script src="../Assets/ol3/js/ol.js"></script>
 
 <script>
@@ -79,36 +78,6 @@ var vectorLayer = new ol.layer.Vector({source:vectorSource});
 		view:view
 		});
 	
-//toggle visibility
-	var checkbox = document.getElementById('checkbox');
-	checkbox.addEventListener('change',function(){
-		var checked = this.checked;
-		if (checked !== vectorSource.getVisible()){
-			vectorSource.setVisible(checked);
-			}
-		});
-	vectorSource.on('change:visible', function () {
-	var visible = this.getVisible();
-	if (visible !== checkbox.checked) {
-	checkbox.checked = visible;
-	}
-	});
-	vectorSource.refresh({force:true});
-
-
-/*
-//click event
-	map.on('click',function(event){
-		var coord = event.coordinate;
-		var degrees = ol.proj.transform(coord,'EPSG:3857','EPSG:4326');
-		var hdms = ol.coordinate.toStringHDMS(degrees);
-		var element = overlay.getElement();
-		element.innerHTML = hdms;
-		overlay.setPosition(coord);
-		map.addOverlay(overlay);
-		});
-*/
-
 //marker event
 	map.on('pointermove', function(e) {
 		map.removeOverlay(infooverlay);
