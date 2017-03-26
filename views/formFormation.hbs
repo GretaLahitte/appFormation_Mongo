@@ -1,4 +1,5 @@
 <h1>{{title}}</h1><br>
+<div class=row col-md-12>
 <form class="form-horizonthal" method="POST" action="{{form_action}}" id="formAddFormation">
     <div class="form-group">
       <label for="libelleField" class="col-xs-2">Libellé</label>
@@ -30,7 +31,7 @@
    <input type="hidden" name="id" value="{{formations._id}}" />
 
 </br>
-    </br> </br> </br>
+    
     <b>Formateurs :</b><br>
 
     {{#each formateurs}}
@@ -38,15 +39,15 @@
     {{/each}}
     <br/>
     </br></br></br>
-    <b>Centres</b>
+    <b>Centres :</b><br>
     {{#each centres}}
           <input type="checkbox" name="centres" value={{this.id}} {{#ifIn this._id ../formations/centres }} checked {{/ifIn}}  >{{this.nom}}  <br>
     {{/each}}
     <div>
-    <button type="submit" class="btn btn-primary"  />Confirmer la {{libelle}}</button>
+    <button type="submit" class="btn btn-primary"  >Confirmer la {{libelle}}</button>
     </div>
 </form>
-
+</div>
 
 <!­­ Script de validation du formulaire de modification ­­>
 <script>

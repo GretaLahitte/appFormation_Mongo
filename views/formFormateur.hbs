@@ -1,12 +1,39 @@
 <h1>{{title}}</h1>
-<form methode="POST" action="{{form_action}}" id="formAddFormateur">
+<div class=row col-md-12>
+
+<form class="form-horizonthal"methode="POST" action="{{form_action}}" id="formAddFormateur">
    <input type="hidden" name="id" value="{{formateur._id}}" />
-    nom : <input type="text" name="nom" value="{{formateur.nom}}" /><br/>
-    prénom : <input type="text" name="prenom" value="{{formateur.prenom}}" /><br/>
-    statut : <input type="text" name="statut" value="{{formateur.statut}}" /><br/>
-    prix_jour : <input type="text" name="prix_jour" value="{{formateur.prix_jour}}" /><br/>
-    <input type="submit" value="Confirmer la {{libelle}}" />
+    <div class="form-group">
+      <label for="nomField" class="col-xs-2">Nom</label>
+      <div class="col-xs-10">
+		<input type="text" class="form-control" id="nomField" name="nom" placeholder="nom" value="{{formateur.nom}}" /><br/>
+    </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="prenomField" class="col-xs-2">Prenom</label>
+      <div class="col-xs-10">
+     <input type="text" class="form-control" id="prenomField" name="prenom" placeholder="prenom" value="{{formateur.prenom}}" /><br/>
+    </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">Libellé</label>
+      <div class="col-xs-10">
+     <input type="text" class="form-control" id="statutField" name="statut" placeholder="statut" value="{{formateur.statut}}" /><br/>
+    </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">Libellé</label>
+      <div class="col-xs-10">
+      <input type="text" class="form-control" id="prix_jourField" name="prix_jour" placeholder="prix par jour" value="{{formateur.prix_jour}}" /><br/>
+    </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Confirmer la {{libelle}}</button>
 </form>
+</div>
 <!-- Script de validation du formulaire de modification -->
 <script>
     var form = document.getElementById('formAddFormateur');

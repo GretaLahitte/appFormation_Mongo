@@ -1,10 +1,33 @@
 <h1>{{title}}</h1>
-<form method="POST" action="{{form_action}}" id="formAddFormation">
+<div class=row col-md-12>
+
+<form class="form-horizonthal" method="POST" action="{{form_action}}" id="formAddFormation">
    <input type="hidden" name="id" value="{{formations._id}}" />
-    libelle : <input type="text" name="libelle" value="{{formations.libelle}}" /><br/>
-    duree : <input type="text" name="duree" value="{{formations.duree}}" /><br/>
-    plan_cours : <input type="text" name="plan_cours" value="{{formations.plan_cours}}" /><br/>
-    prix : <input type="text" name="prix" value="{{formations.prix}}" /><br/>
+        <div class="form-group">
+			<label for="libelleField" class="col-xs-2">Libellé</label>
+			<div class="col-xs-10">
+			<input type="text" class="form-control" id="libelleField" name="libelle" placeholder="libelle" value="{{formations.libelle}}" /><br/>
+    </div>
+    </div>
+        <div class="form-group">
+      <label for="dureeField" class="col-xs-2">Durée</label>
+      <div class="col-xs-10">
+		<input type="text" class="form-control" id="dureeField" name="duree" placeholder="durée de formation" value="{{formations.duree}}" /><br/>
+    </div>
+    </div>
+        <div class="form-group">
+      <label for="plan_coursField" class="col-xs-2">Plan Cours</label>
+      <div class="col-xs-10">
+		<input type="text" class="form-control" id="plan_coursField" name="plan_cours" placeholder="plan cours" value="{{formations.plan_cours}}" /><br/>
+    </div>
+    </div>
+    
+        <div class="form-group">
+      <label for="prixField" class="col-xs-2">Prix</label>
+      <div class="col-xs-10">
+		<input type="text" class="form-control" id="prixField" name="prix" placeholder="prix" value="{{formations.prix}}" /><br/>
+    </div>
+    </div>
     formateurs :<br>
 
 {{#each formateurs}}
@@ -14,5 +37,6 @@
 
 
 
-    <input type="submit" value="Confirmer la {{libelle}}" />
+    <button type="submit" class="btn btn-primary">Confirmer la {{libelle}}</button>
 </form>
+</div>

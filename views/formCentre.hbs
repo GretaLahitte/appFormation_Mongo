@@ -1,17 +1,51 @@
 <h1>{{title}}</h1>
-<form methode="POST" action="{{form_action}}" id="formAddCenter">
+<div class=row col-md-12>
+
+<form  class="form-horizonthal" methode="POST" action="{{form_action}}" id="formAddCenter">
     <input type="hidden" name="id" value="{{centre._id}}" />
     <input  type="hidden" name="lat" id="lat" value="{{centre.lat}}" />
     <input  type="hidden" name="lon" id="lon" value="{{centre.lon}}"/>
-    Nom : <input type="text" name="nom" value="{{centre.nom}}" /><br/>
-    Adresse : <input type="text" name="adresse" value="{{centre.adresse}}" /><br/>
-    cp : <input type="text" name="cp" value="{{centre.cp}}" /><br/>
-    city : <input type="text" name="city" value="{{centre.city}}" /><br/>
-    home_phone : <input type="text" name="home_phone" value="{{centre.home_phone}}" /><br/>
-    mail : <input type="text" name="mail" value="{{centre.mail}}" /><br/>
-        <input type="submit" value="Confirmer la {{libelle}}" />
-
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">Nom</label>
+      <div class="col-xs-10">
+		<input class="form-control" id="libelleNom" placeholder="nom du centre" type="text" name="nom" value="{{centre.nom}}" /><br/>
+	  </div>
+    </div>
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">adresse</label>
+      <div class="col-xs-10">
+       <input type="text" name="adresse" value="{{centre.adresse}}" class="form-control" id="adresseField" name="adresse" placeholder="adresse du centre" /><br/>
+     </div>
+    </div>
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">cp</label>
+      <div class="col-xs-10">
+		<input type="text" value="{{centre.cp}}" class="form-control" id="cpField" name="cp" placeholder="cp"/><br/>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">ville</label>
+      <div class="col-xs-10">
+		<input type="text"  value="{{centre.city}}" class="form-control" id="villeField" name="ville" placeholder="ville"/><br/>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">téléphone</label>
+      <div class="col-xs-10">
+         <input type="text"  value="{{centre.home_phone}}" class="form-control" id="telephoneField" name="télephone" placeholder="telephone"/><br/>
+          </div>
+    </div>
+    <div class="form-group">
+      <label for="libelleField" class="col-xs-2">mail</label>
+      <div class="col-xs-10">
+       <input type="text"  value="{{centre.mail}}" class="form-control" id="mailField" name="mail" placeholder="mail" /><br/>
+       </div>
+    </div>
+    
+        <button type="submit" class="btn btn-primary" />Confirmer la {{libelle}}</button>
+		
 </form>
+</div>
 <!-- Script de validation du formulaire de modification -->
 <script>
     var form = document.getElementById('formAddCenter');
