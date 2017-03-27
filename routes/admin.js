@@ -8,12 +8,16 @@ router.get('/', function(req, res, next) {
 				if (err){
 					throw err;
 				}
+		GLOBAL.database_schema.Centres.find(function(err,results){
+
 				res.render('admin',{
 					title:'Espace Admin',
 					formations: result,
 					status:'true',
-					map:true
+					map:true,
+					coord:results
 				});
+			})
 			}
 		);
 	}else {

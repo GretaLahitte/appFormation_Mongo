@@ -10,12 +10,16 @@ router.get('/', function(req, res, next) {
 			}
 			console.log('formateursList: ',result);
 			if ((req.session.passport) && (req.session.passport.user != null)) {
+						GLOBAL.database_schema.Centres.find(function(err,results){
+
 				res.render('formateurs', {
 					title: 'List of formateurs',
 					formateurs: result ,
 					status: "true",
-					map:true
+					map:true,
+					coord:results
 				});
+			})
 			}else{
 				res.render('login', {
 					title: 'Please login',

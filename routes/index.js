@@ -10,9 +10,12 @@ router.get('/', function(req, res, next) {
 			map:true
 		});
 	}else{
-		res.render('index', {
-			title: 'Bienvenu',
-			map:true
+		GLOBAL.database_schema.Centres.find(function(err,results){
+			res.render('index', {
+				title: 'Bienvenu',
+				map:true,
+				coord:results
+			})
 		})
 	}
 });

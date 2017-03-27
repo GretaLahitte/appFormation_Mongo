@@ -4,10 +4,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 	if ((req.session.passport) && (req.session.passport.user != null)) {
 		req.logout(); // efface de la session.passport la propriété user
-		res.redirect('index',{
-			title: 'Bienvenu',
-			map:true
-		});
-	} 
+		res.redirect('/index')
+	};
+	
 });
 module.exports = router;

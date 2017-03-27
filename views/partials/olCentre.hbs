@@ -1,6 +1,9 @@
-<div id="map" class="map  col-md-4"></div>
+<div class="conteneur col-md-4">
+	<div id="map" class="map"></div>
 	<div id="overlay" style="background-color:white;border-radius:10px;border:1px solid black;padding:5px 10px;"></div>
 	<div id="infos" class='ol-infos'></div>
+</div>
+
 	<script src="../Assets/ol3/js/ol.js"></script>
 
 <script>
@@ -52,7 +55,7 @@ var vectorLayer = new ol.layer.Vector({source:vectorSource});
 	var controlResetNorth = new ol.control.Rotate();
 	var controls = ol.control.defaults().extend([control,controlResetNorth]);
 
-	var center = ol.proj.transform([1.000,44.4],'EPSG:4326','EPSG:3857');
+	var center = ol.proj.transform([0.1,44.0],'EPSG:4326','EPSG:3857');
 
 	var overlay = new ol.Overlay({
 		element:document.getElementById('overlay'),

@@ -8,8 +8,8 @@ router.route('/:_id').get(function(req, res, next) {
   		GLOBAL.database_schema.Centres.findByIdAndRemove(req.params._id,
 			function(err,result){
 				if (err) throw err;
-				console.log('User removed');
-				res.render('delUser',{
+				console.log('Center removed');
+				res.render('delCenter',{
 					title:'Delete Task',
 					status:'true'
 				});

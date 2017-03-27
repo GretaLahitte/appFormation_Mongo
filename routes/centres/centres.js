@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
 				title: 'Liste des centres de formation',
 				centres: result ,
 				status: "true",
-				map: true
+				map: true,
+				coord:result
 			});
 		}else{
 			res.render('login', {title: 'Please login'})
